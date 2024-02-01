@@ -11,8 +11,17 @@ namespace OopFinalProject
         private string productName;
         protected double priceOfProduct;
 
-        public string ProductName { get; set; }
-        public int PriceOfProduct { get; set; }
+        public string ProductName
+        {
+            get { return productName; }
+            set { productName = value; }
+        }
+
+        public double PriceOfProduct
+        {
+            get { return priceOfProduct; }
+            set { priceOfProduct = value; }
+        }
 
         protected Product(string productName, double price)
         {
