@@ -26,16 +26,15 @@ namespace OopFinalProject
             Console.WriteLine("Current Inventory:");
             foreach (Product item in products)
             {
-                Console.WriteLine($"{item.ProductName} - Price: ${item.PriceOfProduct:F}, Quantity: {item.QuantityOfProduct}");
+                Console.WriteLine($"{item.ProductName} - Price per item: ${item.PriceOfProduct:F}, Quantity: {item.QuantityOfProduct}");
             }
             Console.WriteLine("");
         }
 
         public Product FindProduct(string productName)
         {
-            return products.Find(product => product.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase));
+            return products.Find(product => product.ProductName.ToLower() == productName.ToLower());
         }
-
 
     }
 }

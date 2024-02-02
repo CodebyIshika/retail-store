@@ -92,6 +92,7 @@ namespace OopFinalProject
                 Console.Write("Quantity: ");
                 double quantity = Convert.ToDouble(Console.ReadLine());
 
+                Console.WriteLine();
                 Console.WriteLine("Select product type:");
                 Console.WriteLine("1. Electronics");
                 Console.WriteLine("2. Clothes");
@@ -106,6 +107,7 @@ namespace OopFinalProject
                         string brand = Console.ReadLine();
                         Electronics electronicProduct = new Electronics(productName, price, quantity, brand);
                         storeInventoryObj.AddProduct(electronicProduct);
+                        Console.WriteLine();
                         Console.WriteLine($"{productName} is added to inventory.");
                         break;
 
@@ -114,6 +116,7 @@ namespace OopFinalProject
                         string size = Console.ReadLine();
                         Clothes clothingItem = new Clothes(productName, price, quantity, size);
                         storeInventoryObj.AddProduct(clothingItem);
+                        Console.WriteLine();
                         Console.WriteLine($"{productName} is added to inventory.");
                         break;
 
@@ -122,6 +125,7 @@ namespace OopFinalProject
                         DateTime expirationDate = DateTime.Parse(Console.ReadLine());
                         Groceries groceryItem = new Groceries(productName, price, quantity, expirationDate);
                         storeInventoryObj.AddProduct(groceryItem);
+                        Console.WriteLine();
                         Console.WriteLine($"{productName} is added to inventory.");
                         break;
 

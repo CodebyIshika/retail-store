@@ -55,7 +55,10 @@ namespace OopFinalProject
             var uniqueTransactions = transactions.Distinct().ToList();
             foreach (var transaction in uniqueTransactions)
             {
-                Console.WriteLine($"Product: {transaction.PurchasedProduct.ProductName}, Quantity: {transaction.Quantity}");
+                double totalAmount = transaction.PurchasedProduct.PriceOfProduct * transaction.Quantity;
+                double discountAmount = transaction.PurchasedProduct.Discount(transaction.PurchasedProduct.PriceOfProduct);
+                double finalAmount = totalAmount - discountAmount;
+                Console.WriteLine($"Product: {transaction.PurchasedProduct.ProductName}, Quantity: {transaction.Quantity}, Final Amount: {finalAmount:C}");
             }
             Console.WriteLine();
         }

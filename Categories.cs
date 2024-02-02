@@ -17,7 +17,7 @@ namespace OopFinalProject
 
         public override double Discount(double actualPrice)
         {
-            return actualPrice * 0.8; // 20% discount for electronic items
+            return actualPrice * 0.2; // 20% discount for electronic items
         }  
     }
 
