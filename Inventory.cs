@@ -26,7 +26,18 @@ namespace OopFinalProject
         /// </summary>
         public void AddProduct(Product product)
         {
-            products.Add(product);
+            Product existingProduct = FindProduct(product.ProductName);
+
+            if (existingProduct != null)
+            {
+                // Product already exists, update the quantity
+                existingProduct.QuantityOfProduct += product.QuantityOfProduct;
+            }
+            else
+            {
+                // Product does not exist, add it to the inventory
+                products.Add(product);
+            }
         }
 
         /// <summary>
@@ -43,7 +54,7 @@ namespace OopFinalProject
         }
 
         /// <summary>
-        /// Finds a product in the inventory based on its name (case-insensitive).
+        /// Finds a product in the inventory based on its name 
         /// </summary>
         public Product FindProduct(string productName)
         {
@@ -59,14 +70,7 @@ namespace OopFinalProject
                     return product;
                 }
             }
-
             return null;
         }
-
-        //public Product FindProduct(string productName)
-        //{
-        //    return products.Find(product => product.ProductName.ToLower() == productName.ToLower());
-        //}
-
     }
 }

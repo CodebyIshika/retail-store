@@ -12,15 +12,19 @@ namespace OopFinalProject
         private Product purchasedProduct; // The product being purchased
         private int quantity;
 
-        // Constructor for Transaction class
+        // Constructor 
         public Transaction(Product product, int quantity)
         {
             this.purchasedProduct = product;
             this.quantity = quantity;
 
-            // Add the transaction to the user's transaction history
-            Program.UserTransactions.Add(this);
+            // Add the transaction to the transaction history only if there is sufficient quantity
+            if (quantity <= purchasedProduct.QuantityOfProduct)
+            {
+                Program.UserTransactions.Add(this);
+            }    
         }
+
 
         public Product PurchasedProduct => purchasedProduct;
         public int Quantity => quantity;
@@ -28,27 +32,33 @@ namespace OopFinalProject
         // Process the transaction, updating inventory and displaying details
         public void ProcessTransaction()
         {
-            // Check if there is sufficient quantity available in the inventory
-            if (quantity <= purchasedProduct.QuantityOfProduct)
+            try
             {
-                // Update the inventory by subtracting the sold quantity
-                purchasedProduct.QuantityOfProduct -= quantity;
+                // Check if there is sufficient quantity available in the inventory
+                if (quantity <= purchasedProduct.QuantityOfProduct)
+                {
+                    // Update the inventory by subtracting the sold quantity
+                    purchasedProduct.QuantityOfProduct -= quantity;
 
-                // Display transaction details
-                Console.WriteLine();
-                Console.WriteLine($"Transaction Details: {quantity} units of {purchasedProduct.ProductName}");
-                Console.WriteLine($"Total Amount: {purchasedProduct.PriceOfProduct * quantity:C}");
-                Console.WriteLine($"Discount Applied: {purchasedProduct.Discount(purchasedProduct.PriceOfProduct):C}");
-                Console.WriteLine($"Final Amount: {purchasedProduct.PriceOfProduct * quantity - purchasedProduct.Discount(purchasedProduct.PriceOfProduct):C}");
-                Console.WriteLine("");
+                    // Display transaction details
+                    Console.WriteLine();
+                    Console.WriteLine($"Transaction Details: {quantity} units of {purchasedProduct.ProductName}");
+                    Console.WriteLine($"Total Amount: {purchasedProduct.PriceOfProduct * quantity:C}");
+                    Console.WriteLine($"Discount Applied: {purchasedProduct.Discount(purchasedProduct.PriceOfProduct):C}");
+                    Console.WriteLine($"Final Amount: {purchasedProduct.PriceOfProduct * quantity - purchasedProduct.Discount(purchasedProduct.PriceOfProduct):C}");
+                    Console.WriteLine("");
 
-                // Add the transaction to the transaction history
-                Program.UserTransactions.Add(this);
+                    // Add the transaction to the transaction history
+                    Program.UserTransactions.Add(this);
+                }
+                else
+                {
+                    throw new Exception($"Insufficient quantity available for {purchasedProduct.ProductName}.");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                Console.WriteLine($"Error: Insufficient quantity available for {purchasedProduct.ProductName}.");
-                Console.WriteLine("");
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
 

@@ -59,7 +59,7 @@ namespace OopFinalProject
         // Override the Discount method for groceries
         public override double Discount(double actualPrice)
         {
-            return actualPrice; // no discount for grocery items
+            return 0; // no discount for grocery items
         }     
     }
 }
