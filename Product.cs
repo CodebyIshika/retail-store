@@ -10,6 +10,8 @@ namespace OopFinalProject
     {
         private string productName;
         protected double priceOfProduct;
+        protected double quantityOfProduct;
+        private double price;
 
         public string ProductName
         {
@@ -23,13 +25,18 @@ namespace OopFinalProject
             set { priceOfProduct = value; }
         }
 
-        protected Product(string productName, double price)
+        public double QuantityOfProduct
+        {
+            get { return quantityOfProduct; }
+            set { quantityOfProduct = value; }
+        }
+
+        protected Product(string productName, double price, double quantity)
         {
             this.productName = productName;
             this.priceOfProduct = price;
+            this.quantityOfProduct = quantity;
         }
-
-        public abstract void ProcessingTransaction(int quantity);
 
         public abstract double Discount(double actualPrice);
     }
