@@ -11,6 +11,7 @@ namespace OopFinalProject
         private static Inventory storeInventoryObj = new Inventory();
         private static List<Transaction> userTransactions = new List<Transaction>();
 
+        // Property to access the user transactions list
         public static List<Transaction> UserTransactions => userTransactions;
         static void Main(string[] args)
         {
@@ -77,6 +78,8 @@ namespace OopFinalProject
                 }
             }    
         }
+
+        // Method to add a new product to the inventory
         private static void AddProductToInventory()
         {
             try
@@ -146,6 +149,7 @@ namespace OopFinalProject
             }
         }
 
+        // Method to process a user transaction
         private static void ProcessTransaction()
         {
             try

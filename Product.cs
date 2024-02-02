@@ -8,11 +8,12 @@ namespace OopFinalProject
 {
     public abstract class Product
     {
+        // fields
         private string productName;
         protected double priceOfProduct;
         protected double quantityOfProduct;
-        private double price;
 
+        // protected
         public string ProductName
         {
             get { return productName; }
@@ -31,6 +32,7 @@ namespace OopFinalProject
             set { quantityOfProduct = value; }
         }
 
+        // Constructor for the Product class.
         protected Product(string productName, double price, double quantity)
         {
             this.productName = productName;
@@ -38,6 +40,7 @@ namespace OopFinalProject
             this.quantityOfProduct = quantity;
         }
 
+        // Abstract method representing the discount calculation for a product.
         public abstract double Discount(double actualPrice);
     }
 }
